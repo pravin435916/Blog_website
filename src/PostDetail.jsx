@@ -2,13 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-
+import { baseUrl } from './baseUrl';
 const PostDetail = () => {
   const { id } = useParams();
   const [post, setPost] = useState({});
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/posts/${id}`)
+    axios.get(`${baseUrl}/api/posts/${id}`)
       .then(response => setPost(response.data))
       .catch(error => console.error('Error fetching post:', error));
   }, [id]);
